@@ -20,6 +20,10 @@ RestTemplate Blocking Client
     
               Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(),Movie.class);
 
+Note:
+
+Instead of locahost , give the name as mentioned in the application.yml/properties file -> spring.application.name.
+It is assigned in the Serivce Discovery ( Eureka Server ).
 
 WebClient Non-Blocking Client
 
@@ -37,3 +41,7 @@ WebClient Non-Blocking Client
 			    .bodyToMono(Movie.class)
 		            .block();
     
+Note:
+
+Instead of locahost , give the name as mentioned in the application.yml/properties file -> spring.application.name.
+It is assigned in the Serivce Discovery ( Eureka Server ).
