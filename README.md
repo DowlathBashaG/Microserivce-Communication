@@ -2,10 +2,10 @@
 
 Two Types :
 
-      1. Synchronous HTTP communication.
+      1. Synchronous communication.
             a. RestTemplate   ( Deprecated from Spring 5.0 )
             
-      2. Asynchronous communication over AMQP.
+      2. Asynchronous communication.
             b.  WebClient     ( Spring Webflux / Mano )
        
 RestTemplate Blocking Client
