@@ -14,7 +14,7 @@ RestTemplate Blocking Client
 		- Thread-per-request model [ It means thread will block until the web client recives the reponse ].
 		- Consequently,the application will create many threads,which will exhaust the thread pool or occupy all the available memory.
     
-    Code Snippet for RestTemplate
+    Code Snippet for RestTemplate :-
     
               RestTemplate restTemplate = new RestTemplate();
     
@@ -26,7 +26,7 @@ WebClient Non-Blocking Client
 		- Reactive Stack
 		- Webclient uses an asynchronous , non-blocking solution provided by the spring reactive framework.
 
-    Code Snippet for WebClient
+    Code Snippet for WebClient :-
 
               WebClient.Builder webClientBuilder = WebClient.builder();
 
