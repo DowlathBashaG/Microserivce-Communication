@@ -45,3 +45,110 @@ Note:
 
 Instead of locahost , give the name as mentioned in the application.yml/properties file -> spring.application.name.
 It is assigned in the Serivce Discovery ( Eureka Server ).
+
+
+External API accessing :
+
+Step 1 : 
+
+	https://www.themoviedb.org/
+			
+	create the user profile and generate API ( its under your profile and get the API key ). 
+			Its very important for accessing external themoviedb API.
+			
+Step 2 :
+
+	Update API Key info in application property file.
+			
+
+
+Project Folders :
+
+1. discovery-server
+
+	Using Eureka technology	, register eureka clients in the eureka server. Add the following lines in (application.properties) the eureka server :
+   
+	server.port : 8761
+	eureka.client.register-with-eureka = false
+	eureka.client.fetch-registry = false
+	
+	
+
+2. movie-catalog-service
+
+	It receives movie info and ratings of the movies from other two services.
+	
+	Input :
+			http://localhost:9091/catalog/foo
+	
+	Output :
+	
+				[
+					{
+					userId: "Lock, Stock and Two Smoking Barrels",
+					desc: null,
+					rating: 3
+					},
+					{
+					userId: "Star Trek: Insurrection",
+					desc: null,
+					rating: 4
+					}
+				]
+	
+	I
+	
+3. movie-info-service
+
+	It's having movie info service and it will accessing external API and deliver the movie info.
+	
+	Input :
+	
+			http://localhost:9092/movies/500
+			
+	
+	Output :
+	
+			{
+				movieId: "500",
+				movieName: "Reservoir Dogs",
+				desc: null
+			}
+	
+	Note:
+	
+	application.properties 
+								Update API Key.
+								spring.application.name = movie-info-service
+server.port = 9092
+api.key=api-key-here
+
+
+4. ratings-data-service
+
+	It receive movie id and sends the ratings of the movie.
+	
+	
+	Input :
+	
+			http://localhost:9093/ratingsdata/user/foo
+			
+	
+	Output:
+	
+			{
+				userId: "foo",
+				ratings: [
+						{
+						movieId: "100",
+						rating: 3
+						},
+						{
+						movieId: "200",
+						rating: 4
+						}
+				]
+            }
+
+
+		
